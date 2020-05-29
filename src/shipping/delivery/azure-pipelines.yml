@@ -139,7 +139,7 @@ jobs:
 
       chartPath: $(chartPath)
 
-      chartVersion: $(Build.SourceBranchName)
+     # chartVersion: $(Build.SourceBranchName)
 
       updateDependency: true
 
