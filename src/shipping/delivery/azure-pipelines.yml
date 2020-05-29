@@ -145,7 +145,7 @@ jobs:
 
       save: false
 
-      arguments: '--app-version $(Build.SourceBranchName)'
+   #   arguments: '--app-version $(Build.SourceBranchName)'
 
   - task: AzureCLI@1
   #  condition: eq(variables['fullCI'],True)
