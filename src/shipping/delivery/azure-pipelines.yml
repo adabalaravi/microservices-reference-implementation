@@ -153,7 +153,7 @@ jobs:
     inputs:
       azureSubscription: $(azureSubscription)
       scriptLocation: 'inlineScript'
-      inlineScript: 'az acr helm push $(System.ArtifactsDirectory)/$(repositoryName) $(Build.SourceBranchName).tgz --name $(azureContainerRegistryName) --force;'
+      inlineScript: 'az acr helm push $(System.ArtifactsDirectory)/$(repositoryName)-$(Build.SourceBranchName).tgz --name $(azureContainerRegistryName) --force;'
 
 
        
