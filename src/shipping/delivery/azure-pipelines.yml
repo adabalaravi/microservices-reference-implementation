@@ -106,7 +106,7 @@ jobs:
       imageName: '$(imageName)'
 
   - task: Docker@1
-    condition: eq(variables['fullCI'],True)
+   # condition: eq(variables['fullCI'],True)
     displayName: 'Push runtime image'
     inputs:
       azureSubscriptionEndpoint: $(azureSubscription)
