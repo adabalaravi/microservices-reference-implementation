@@ -3,9 +3,10 @@ variables:
   chartPath: charts/delivery
   dockerFileName: src/shipping/delivery/Dockerfile
   imageName: $(repositoryName):$(Build.SourceBranchName)
-  azureSubscription: AZURE_PIPELINES_SERVICE_CONN_NAME_VAR_VAL
-  azureContainerRegistry: ACR_SERVER_VAR_VAL
-  azureContainerRegistryName: ACR_NAME_VAR_VAL
+  azureSubscription: $(AZURE_PIPELINES_SERVICE_CONN_NAME_VAR_VAL)
+  azureContainerRegistry: myownacr.azurecr.io
+  azureContainerRegistryName: myownacr
+
 
 name: $(build.sourceBranch)-$(Date:yyyyMMdd)$(Rev:.rr)
 
@@ -119,7 +120,7 @@ jobs:
       includeSourceTags: false
 
   - task: HelmInstaller@0
-    condition: eq(variables['fullCI'],True)
+  #  condition: eq(variables['fullCI'],True)
     displayName: 'Install Helm 3.0.3'
     inputs:
       helmVersion: 3.0.3
@@ -131,7 +132,7 @@ jobs:
       checkLatestKubectl: false
 
   - task: HelmDeploy@0
-    condition: eq(variables['fullCI'],True)
+  #  condition: eq(variables['fullCI'],True)
     displayName: 'helm package'
     inputs:
       command: package
@@ -147,7 +148,7 @@ jobs:
       arguments: '--app-version $(Build.SourceBranchName)'
 
   - task: AzureCLI@1
-    condition: eq(variables['fullCI'],True)
+  #  condition: eq(variables['fullCI'],True)
     displayName: 'Push a helm package'
     inputs:
       azureSubscription: $(azureSubscription)
