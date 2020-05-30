@@ -158,7 +158,7 @@ jobs:
   - task: HelmDeploy@0
     displayName: Helm upgrade
     inputs:
-      azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+      azureSubscriptionEndpoint:  $(azureSubscription)
       azureResourceGroup: "demosg"
       kubernetesCluster: frontendakscluste
       command: upgrade
