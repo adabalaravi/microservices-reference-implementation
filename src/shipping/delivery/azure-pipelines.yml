@@ -154,17 +154,3 @@ jobs:
       azureSubscription: $(azureSubscription)
       scriptLocation: 'inlineScript'
       inlineScript: 'az acr helm push $(System.ArtifactsDirectory)/$(repositoryName)-v0.1.0.tgz --name $(azureContainerRegistryName) --force;'
-  
-  - task: HelmDeploy@0
-    inputs:
-      connectionType: 'Azure Resource Manager'
-      azureSubscription: 'MyOwnServiceConnection'
-      azureResourceGroup: 'demoSg'
-      kubernetesCluster: 'frontendakscluste'
-      command: 'install'
-      chartType: 'FilePath'
-      chartPath: 'charts/delivery'
-      releaseName: 'dev'
-
-      
-       
